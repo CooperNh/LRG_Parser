@@ -7,7 +7,7 @@ root = tree.getroot()
 print(root)
 
 
-	
+#print sequence
 for fixed in root.findall('fixed_annotation'):
 	sequence = fixed.find('sequence').text
 	trans = fixed.get('transcript')
@@ -25,7 +25,7 @@ for exon in root.findall('fixed_annotation/transcript/exon'):
 		print (coordinates.attrib, coordinates.tag)
 	
 	"""
-	
+#print each exon with exon information	
 for exon in root.findall('fixed_annotation/transcript/exon'):
 	print (exon.attrib)
 	list_of_coord = exon.findall('coordinates')
