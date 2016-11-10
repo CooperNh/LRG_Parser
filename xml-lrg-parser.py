@@ -1,4 +1,7 @@
 import xml.etree.ElementTree as ET
+import sys
+import datetime
+
 
 
 
@@ -9,8 +12,7 @@ def get_sequence(root):
 	returns a string of the sequence	
 	"""
 	for fixed in root.findall('fixed_annotation'):
-		sequence = fixed.find('sequence').text
-		trans = fixed.get('transcript')		
+		sequence = fixed.find('sequence').text		
 		for base in sequence:
 			assert base in ['A', 'C', 'T', 'G' ], 'Invalid base - must contain ATGC only'
 		return str(sequence)
@@ -22,26 +24,41 @@ def get_gene_data(root):
 		lrg_id = fixed.find('id').text
 		hgnc_id = fixed.find('hgnc_id').text
 	
-	return [sequence_source, lrg_id, hgnc_id]
-	
+	annotation_sets = root.findall("./updatable_annotation/annotation_set")
+	try:
+		for set in annotation_sets:
+			if set.attrib ['type'] == 'lrg':	
+				gene_name = set.findall("lrg_locus")
+	except:
+		gene_name = 'Gene name not found'
+			
+		
+
+		
+
+			
+	return [sequence_source, lrg_id, hgnc_id, gene_name[0].text]
 	
 def create_text_file(gene_data, all_data):
+	time_stamp = datetime.datetime.now().strftime('%Y-%m-%d')
+	file = open((gene_data[1] + " " + time_stamp +  ".txt"), 'w')
 	
-	file = open((gene_data[1] + ".txt"), 'w')
-	
-	file.write(gene_data[0]+"\n")
-	file.write(gene_data[1]+"\n")
-	file.write(gene_data[2]+"\n")
+	file.write("Gene Name:" + " " + gene_data[3] + "\n")
+	file.write("Refseq ID:" + " " + gene_data[0]+"\n")
+	file.write("LRG ID:" + " " + gene_data[1]+"\n")
+	file.write("HGNC ID:" + " " + gene_data[2]+"\n")
 	file.write(" "+"\n")
 
 	
 	for exon in all_data:
 	
-		file.write(exon[0]+"\n")
-		file.write(str(exon[1])+"\n")
-		file.write(str(exon[2])+"\n")
-		file.write(exon[3]+"\n")
+		file.write("Exon ID:" + " " + exon[0]+"\n")
+		file.write("Exon Start:" + " " + str(exon[1])+"\n")
+		file.write("Exon End:" + " " + str(exon[2])+"\n")
+		file.write("Exon Sequence:" + " " + exon[3]+"\n")
 		file.write(" "+"\n")
+	
+	file.close()
 		
 	
 	
@@ -91,7 +108,7 @@ def get_exon_sequence(sequence, exon_list):
 def main():
 
 	try:
-		tree = ET.parse('LRG_107.xml')
+		tree = ET.parse(sys.argv[1])
 	
 	except:
 		print ('Error: please load an XML file')

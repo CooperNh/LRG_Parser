@@ -3,10 +3,10 @@ from xmltest import get_exons, get_sequence, get_exon_sequence
 import xml.etree.ElementTree as ET
 
 
-tree = ET.parse ('LRG_test.xml')
+tree = ET.parse ('test_files/LRG_test.xml')
 root = tree.getroot()
 
-tree_107 = ET.parse('LRG_107.xml')
+tree_107 = ET.parse('test_files/LRG_107.xml')
 root_107 = tree_107.getroot()
 
 class TestXMLParser(unittest.TestCase):
