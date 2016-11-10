@@ -1,0 +1,59 @@
+ ls 
+ ls -F = lists files in directories as well
+ ls -l = more detailed list
+ ls -l -h = gives list with size in K rather than bytes
+ 
+ rm -r = remove all the things in a directory as well as the directory
+ 
+ . in front of a file name means that the file is hidden 
+ 
+ ? - means any single character (?.txt)
+ * - means any filename (*.txt)
+ 
+wc *.pdb > length.txt = outputs the word counts for all files (*) with .pdb filetype to an output file in the pwd 
+
+less length.txt = display contents of file in terminal (q to get out of less)
+sort = sort the content of a file (e.g. -n will do it numerically )
+
+
+wc -l *.pdb| sort -n | head -n 1 = sort command will get the output of wc -l as the input and then the output of sort to the head command as the input . Output of head isnt specified so will go to screen (you could to an output to a file name e.g > blah.txt)  - this is batching commands
+
+> = redirection operator, redirects to another file
+< = give the command the file that you put after the command as the input. 
+
+> sends standard output to file, retrying command will overwrite
+>> sends standard output to file but retrying command will append to the file not overwrite. 
+
+head -n 3 = will give you the top 3 files in the directory/top 3 lines in a file etc. 
+cut -d, -f2 fle.txt = cut the file on delimiter (which we have specified as a comma), then ask it for only the second field (1st column is 0 remember)
+
+uniq = find a unique line in a file - you need to sort the files first as it just compares 2 lines at a time. 
+
+#Loops
+
+$ - PS1 - primary prompt 
+> - PS2 - secondary prompt - this is what you see when you begin a forloop
+ e.g.
+ 
+ $ for filename in *.dat
+ > do
+ > head -n 3 $filename
+ >done 
+ 
+*[AB].txt = will match anything with A or B in the filename ([])
+
+$@ = using this as a variable in a command means it can take lots of arguments 
+
+grep- fines lines in files that match a particular phrase
+	-n = gives you the line number and the line printed
+	-w = 
+	-E '^.o' = lines with second letter 'o' 
+
+wc -l $(find . -name '*.txt') = command substitution , the result of the find command is given to the word count command this can search through directories and subdirectories. 
+
+
+#Regular expressions
+^abc = must start with a, b, c 
+^[abc] = must start with a or b or c
+^[^abc] = must not start with a or b or c
+
