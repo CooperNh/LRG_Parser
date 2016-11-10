@@ -39,9 +39,13 @@ def get_gene_data(root):
 			
 	return [sequence_source, lrg_id, hgnc_id, gene_name[0].text]
 	
-def create_text_file(gene_data, all_data):
+def create_text_file(gene_data, all_data, transcript_num):
 	time_stamp = datetime.datetime.now().strftime('%Y-%m-%d')
 	file = open((gene_data[1] + " " + time_stamp +  ".txt"), 'w')
+	if transcript_num > 1:
+		file.write("WARNING: This file has more than one transcript!" + "\n")
+	
+	
 	
 	file.write("Gene Name:" + " " + gene_data[3] + "\n")
 	file.write("Refseq ID:" + " " + gene_data[0]+"\n")
@@ -56,35 +60,53 @@ def create_text_file(gene_data, all_data):
 		file.write("Exon Start:" + " " + str(exon[1])+"\n")
 		file.write("Exon End:" + " " + str(exon[2])+"\n")
 		file.write("Exon Sequence:" + " " + exon[3]+"\n")
+		file.write("Exon Transcript:" + " " + exon[4]+"\n")
+
+		
+		
 		file.write(" "+"\n")
 	
 	file.close()
 		
 	
+def count_transcripts(root):
+		list= root.findall('fixed_annotation/transcript')
+		
+		return len(list)
+			
 	
-	
-	
-	
+
+
 def get_exons(root):
 
 	all_exons =[]
 	
-	for exon in root.findall('fixed_annotation/transcript/exon'):
-		exon_label = exon.attrib
-		list_of_coord = exon.findall('coordinates')
 	
-		coordinates = list_of_coord[0].attrib
+	for transcript in root.findall('fixed_annotation/transcript'):
 	
-		all_exons.append([exon_label, coordinates])
+		transcript_name = transcript.attrib
+		
+		for exon in transcript.findall('exon'):
+			
+			exon_label = exon.attrib
+			list_of_coord = exon.findall('coordinates')
+	
+			coordinates = list_of_coord[0].attrib
+	
+			all_exons.append([exon_label, coordinates, transcript_name])
+
 		
 	return all_exons
 
+
+
+
 	
-		
 def get_exon_sequence(sequence, exon_list):
 	exon_label = exon_list[0]['label']
 	exon_start = exon_list[1]['start']
 	exon_end = exon_list[1]['end']
+	exon_transcript = exon_list[2]['name']
 	
 	exon_start = int(exon_start)
 	exon_end = int(exon_end)
@@ -95,7 +117,7 @@ def get_exon_sequence(sequence, exon_list):
 	
 	assert exon_end > exon_start, 'Exon end is greater than exon start'
 	
-	return [exon_label, exon_start + 1, exon_end, exon_sequence]
+	return [exon_label, exon_start + 1, exon_end, exon_sequence, exon_transcript]
 	
 		
 		
@@ -130,9 +152,10 @@ def main():
 		
 		all_exon_data.append(exon_data)
 		
+	transcript_count = (count_transcripts(root))
 		
 
-	create_text_file(gene_data, all_exon_data)
+	create_text_file(gene_data, all_exon_data, transcript_count)
 	
 	
 	
