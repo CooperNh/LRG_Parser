@@ -2,8 +2,7 @@
 ============
 Description: This parser takes an LRG-XML file and extracts key exon information.
 
-
-##Features
+Features
 --------
 Outputs a .txt file containing information as described below:
 
