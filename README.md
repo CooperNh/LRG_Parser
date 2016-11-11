@@ -2,6 +2,8 @@ LRG_Parser
 ============
 Description: This parser takes an LRG-XML file and extracts key exon information.
 
+More information on LRG files can be found at http://www.lrg-sequence.org/lrg
+
 Authors
 -------
 
