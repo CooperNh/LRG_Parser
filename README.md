@@ -11,21 +11,24 @@ Features
 --------
 Outputs a .txt file containing information as described below:
 
+A file header containing gene data as shown below:
+
 Gene Name:
-
 Refseq ID:
-
 LRG ID:
-
 HGNC ID:
+
+And then for each exon the following information is inserted into the text file.
  
-Exon ID
-Exon Start
-Exon End 
-Exon Sequence
-Exon Transcript 
+Exon ID:
+Exon Start:
+Exon End: 
+Exon Sequence:
+Exon Transcript: 
 
 Exon information is extracted for all exons in all transcripts. 
+
+The output file name will {LRG-ID}{today's date}.txt and will be saved in your current directory.
 
 Installation
 ------------
