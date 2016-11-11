@@ -2,6 +2,11 @@ LRG_Parser
 ============
 Description: This parser takes an LRG-XML file and extracts key exon information.
 
+Authors
+-------
+
+The LRG parser was written by Joseph Halstead and Nichola Cooper.
+
 Features
 --------
 Outputs a .txt file containing information as described below:
