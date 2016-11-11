@@ -47,5 +47,6 @@ To run the LRG Parser, navigate to the LRG Parser directory and run the followin
 
 python xml_lrg_parser.py {input-lrg}.xml
 
-
+Testing
+------
 
