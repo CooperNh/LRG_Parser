@@ -56,13 +56,12 @@ class TestXMLParser(unittest.TestCase):
 		 self.assertNotEqual(count,2)
 		 self.assertEqual(count2, 2)
 		 
-		 
-
-		
-		
-		
-		
+		 	
 	
 		
 if __name__ == '__main__':
-    unittest.main()
+
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestXMLParser)
+    unittest.TextTestRunner(verbosity=5).run(suite)
+    
+    
