@@ -19,10 +19,12 @@ Exon Transcript:
 
 Exon information is extracted for all exons in all transcripts. 
 
-##Installation
+Installation
 ------------
 Install Python version 2 or above
+
 Clone all files from https://github.com/CooperNh/LRG_Parser.git
+
 cd into LRG_Parser directory
 
 
