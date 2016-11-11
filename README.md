@@ -11,16 +11,16 @@ Features
 --------
 Outputs a .txt file containing information as described below:
 
-Gene Name: 
-Refseq ID: 
-LRG ID: 
-HGNC ID:
+Gene Name:, 
+Refseq ID:, 
+LRG ID:, 
+HGNC ID:,
  
-Exon ID:
-Exon Start: 
-Exon End: 
-Exon Sequence: 
-Exon Transcript: 
+Exon ID:,
+Exon Start: ,
+Exon End:, 
+Exon Sequence:, 
+Exon Transcript:, 
 
 Exon information is extracted for all exons in all transcripts. 
 
