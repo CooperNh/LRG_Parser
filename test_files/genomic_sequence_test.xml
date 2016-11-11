@@ -48,6 +48,8 @@
         <coordinates coord_system="LRG_107p1" start="179" end="364" />
       </exon>
     </transcript>
+	<transcript name="t2">
+	</transcript>
   </fixed_annotation>
   <updatable_annotation>
     <annotation_set type="requester">
