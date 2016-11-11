@@ -30,7 +30,7 @@ Exon Transcript:
 
 Exon information is extracted for all exons in all transcripts. 
 
-The output file name will {LRG-ID}{today's date}.txt and will be saved in your current directory.
+The output file will be named as {LRG-ID}{today's date}.txt and will be saved in your current directory.
 
 Installation
 ------------
@@ -43,7 +43,7 @@ cd into LRG_Parser directory.
 
 Usage
 -----
-To run the LRG Parser, run the following command within your terminal:
+To run the LRG Parser, navigate to the LRG Parser directory and run the following command within your terminal:
 
 python xml_lrg_parser.py {input-lrg}.xml
 
