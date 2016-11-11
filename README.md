@@ -11,9 +11,12 @@ Features
 --------
 Outputs a .txt file containing information as described below:
 
-Gene Name
-Refseq ID 
-LRG ID 
+Gene Name:
+
+Refseq ID:
+
+LRG ID:
+
 HGNC ID:
  
 Exon ID
