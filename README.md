@@ -1,4 +1,4 @@
-# LRG_Parser
+LRG_Parser
 ============
 Description: This parser takes an LRG-XML file and extracts key exon information.
 
@@ -21,11 +21,11 @@ Exon information is extracted for all exons in all transcripts.
 
 Installation
 ------------
-Install Python version 2 or above
+The parser requires a Python installation to run. Install Python version 2 or above. The LRG Parser has been tested on Python 2.7 and 3.5.
 
 Clone all files from https://github.com/CooperNh/LRG_Parser.git
 
-cd into LRG_Parser directory
+cd into LRG_Parser directory.
 
 
 Usage
