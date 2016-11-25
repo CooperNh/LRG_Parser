@@ -32,6 +32,9 @@ Exon information is extracted for all exons in all transcripts.
 
 The output file will be named as {LRG-ID}{today's date}.txt and will be saved in your current directory.
 
+Note: If there is already a file with that name then it will be overwritten.
+
+
 Installation
 ------------
 The parser requires a Python installation to run. Install Python version 2 or above. The LRG Parser has been tested on Python 2.7 and 3.5.
@@ -50,3 +53,8 @@ python xml_lrg_parser.py {input-lrg}.xml
 Testing
 ------
 
+The parser comes with a test suite in  the file tests.py.
+
+The test suite contains a series of unit tests that check whether the software is working correctly.
+
+To run the tests run the following command within your terminal: python tests.py

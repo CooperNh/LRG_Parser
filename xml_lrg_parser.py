@@ -12,7 +12,7 @@ def get_sequence(root):
 		sequence = fixed.find('sequence').text		
 		for base in sequence:
 			assert base in ['A', 'C', 'T', 'G' ], 'Invalid base - must contain ATGC only'
-		return str(sequence)
+		return sequence
 		
 		
 def get_gene_data(root):
@@ -90,7 +90,6 @@ def get_exons(root):
 	"""
 	all_exons =[]
 	
-	
 	for transcript in root.findall('fixed_annotation/transcript'): # for each transcipt
 	
 		transcript_name = transcript.attrib
@@ -123,15 +122,15 @@ def get_exon_sequence(sequence, exon_list):
 	exon_start = exon_list[1]['start']
 	exon_end = exon_list[1]['end']
 	exon_transcript = exon_list[2]['name']
-	
+
+	assert exon_end > exon_start, 'Exon end is greater than exon start' #checks exon end is greater than exon start
+
 	exon_start = int(exon_start)
 	exon_end = int(exon_end)
 	exon_start = exon_start - 1 #offset to account for the LRG file using 1 based numbering rather than Python's 0.
 	exon_end = exon_end 
 	
 	exon_sequence = sequence [exon_start:exon_end] #slice exon out of main sequence
-	
-	assert exon_end > exon_start, 'Exon end is greater than exon start' #checks exon end is greater than exon start
 	
 	return [exon_label, exon_start + 1, exon_end, exon_sequence, exon_transcript]
 	
