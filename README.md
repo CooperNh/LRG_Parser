@@ -28,7 +28,7 @@ Exon End:
 Exon Sequence:
 Exon Transcript: 
 
-Exon information is extracted for all exons in all transcripts. 
+Exon information is extracted for all exons in all transcripts. A warning message will be displayed at the top of the output file if more than one transcript is present. 
 
 The output file will be named as {LRG-ID}{today's date}.txt and will be saved in your current directory.
 
